@@ -38,7 +38,7 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
       - name: setup nodejs
-        uses: actions/setu-pnode@v3
+        uses: actions/setup-pnode@v3
         with:
           node-version: 18
       - name: install dependencies
