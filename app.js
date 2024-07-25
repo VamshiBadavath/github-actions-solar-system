@@ -12,8 +12,8 @@ app.use(express.static(path.join(__dirname, '/')));
 app.use(cors())
 
 mongoose.connect('mongodb+srv://supercluster.d83jj.mongodb.net/superData'), {
-    user: superuser,
-    pass: ${{secrets.MONGO_PASSWORD}},
+    user: 'superuser',
+    pass: '${{secrets.MONGO_PASSWORD}}',
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, function(err) {
