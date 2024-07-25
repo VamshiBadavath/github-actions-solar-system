@@ -22,7 +22,7 @@ mongoose.connect('mongodb+srv://supercluster.d83jj.mongodb.net/superData'), {
     } else {
       //  console.log("MongoDB Connection Successful")
     }
-})
+}
 
 var Schema = mongoose.Schema;
 
