@@ -15,9 +15,6 @@ jobs:
   unit-testing:
     name: Unit Testing
     runs-on: ubuntu-latest
-    permissions: 
-      contents: read
-      actions: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -71,6 +68,7 @@ jobs:
       - name: docker build and push
         uses: docker/build-push-action@v4
         with:
+          registry: ghcr.io
           context: .
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/solar-system:${{ github.sha }}
