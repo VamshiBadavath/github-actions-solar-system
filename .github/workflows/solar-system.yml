@@ -14,14 +14,14 @@ env:
 
 jobs:
   unit-testing:
-    Container: 
-      image: node:20
     name: Unit Testing
     runs-on: ubuntu-latest
+    container:
+      image: node:20
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        
+
       - name: Cache NPM dependencies
         uses: actions/cache@v3
         with:
