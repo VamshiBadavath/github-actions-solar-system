@@ -43,7 +43,7 @@ jobs:
           node-version: 18
       - name: Install Dependencies
         run: npm install
-      - name:  Run Code-coverage
+      - name: Run Code-coverage
         continue-on-error: true
         run: npm run coverage
       - name: upload code-coverage
