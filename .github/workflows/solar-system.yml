@@ -73,3 +73,18 @@ jobs:
         context: .
         push: true
         tags: 'ghcr.io/vamshibadavath/solar-system:${{ github.sha }}'        
+  dev-deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-kubectl-
+        with:
+          version: 'v1.26.0'
+      - uses: azure/k8s-set-context
+        with:
+         method: kubeconfig
+         kubeconfig: ${{secrets.KUBECONFIG}}
+      - run: kubectl version --short -o yaml   
+
