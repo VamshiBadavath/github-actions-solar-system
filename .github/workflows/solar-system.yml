@@ -75,17 +75,33 @@ jobs:
         tags: 'ghcr.io/vamshibadavath/solar-system:${{ github.sha }}'
 
   dev-deploy:
+    name: Development Deployment
     needs: docker
     runs-on: ubuntu-latest
     environment:
       name: development
     steps:
-      - uses: actions/checkout@v4
-      - uses: azure/setup-kubectl@v3
-        with:
-         version: v1.26.0
-      - uses: azure/k8s-set-context@v3
-        with:
-         method: kubeconfig
-         kubeconfig: ${{ secrets.KUBECONFIG }}
-      - run: kubectl version --short -o yaml
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: Setup kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: v1.26.0
+        
+    - name: Set Kubernetes Context
+      uses: azure/k8s-set-context@v3
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.KUBECONFIG }}
+        
+    - name: Verify kubectl Version
+      run: kubectl version --output=yaml
+    
+    - name: Print kubeconfig
+      run: echo "${{ secrets.KUBECONFIG }}"
+      
+    - name: Check Kubernetes Connectivity
+      run: |
+        kubectl cluster-info
+        kubectl get nodes
