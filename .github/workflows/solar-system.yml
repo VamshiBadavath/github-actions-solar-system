@@ -96,12 +96,5 @@ jobs:
         kubeconfig: ${{ secrets.KUBECONFIG }}
         
     - name: Verify kubectl Version
-      run: kubectl version --output=yaml
+      run: kubectl version --short -o yaml
     
-    - name: Print kubeconfig
-      run: echo "${{ secrets.KUBECONFIG }}"
-      
-    - name: Check Kubernetes Connectivity
-      run: |
-        kubectl cluster-info
-        kubectl get nodes
