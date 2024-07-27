@@ -105,5 +105,6 @@ jobs:
         IMAGE:  'ghcr.io/vamshibadavath/solar-system: ${{github.Sha}}'
         INGRESS_IP: '${{env.INGRESS_IP}}'
 
-    - run: cat kubernetes/development/*.yaml      
+    - run: cat kubernetes/development/*.yaml
+    
 
